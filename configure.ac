@@ -5,59 +5,28 @@ AC_INIT([LIBSTRESS], [0.0.1],
         [libstress])
 AC_CONFIG_HEADER([config.h])
 AM_INIT_AUTOMAKE([$PACKAGE_TARNAME], [$PACKAGE_VERSION])
+AM_MAINTAINER_MODE
+AM_SILENT_RULES([yes])
 
 dnl directory requirement
-TOP_DIR=`pwd`
-SRC_DIR="${TOP_DIR}/src"
-AC_SUBST(TOP_DIR)
-AC_SUBST(SRC_DIR)
+dnl TOP_DIR=`pwd`
+dnl SRC_DIR="${TOP_DIR}/src"
+dnl AC_SUBST(TOP_DIR)
+dnl AC_SUBST(SRC_DIR)
 
 dnl Libraries requirements
 GLIB2_VERSION=2.2.0
 AC_SUBST(GLIB2_VERSION)
 
 
-AM_MAINTAINER_MODE
-
 dnl Put the preprocessor macros in a header instead of command line 
 AC_CONFIG_SRCDIR([src/libstress.c])
 
 dnl Checks for headers
-AC_HEADER_STDC
-AC_HEADER_DIRENT
-AC_CHECK_HEADERS([stdlib.h string.h sys/time.h unistd.h])
+AC_CHECK_HEADERS([errno.h fnctl.h glib.h stdio.h stdlib.h sys/types.h unistd.h])
 
-dnl Checks for typedefs, structures, and compiler characteristics.
-AC_C_CONST
-AC_TYPE_PID_T
-AC_TYPE_SIZE_T
-AC_TYPE_SIGNAL
-AC_STRUCT_TM
-
-dnl Checks for library functions.
-AC_FUNC_STAT
-AC_FUNC_STRFTIME
-AC_FUNC_VPRINTF
-AC_CHECK_FUNCS(gettimeofday select socket strdup strerror strstr)
-
-dnl dynamic libraries/plugins
 dnl Checks for programs
-
 AM_PROG_LIBTOOL
-
-if test "x$prefix" = "xNONE"; then
-	prefix="/usr/local"
-fi
-
-if test "x$localstatedir" = "x\${prefix}/var"; then
-	localstatedir="$prefix/var"
-fi
-
-if test "x$sysconfdir" = "x\${prefix}/etc"; then
-    sysconfdir="$prefix/etc"
-fi
-
-AC_SUBST(localstatedir)
 
 dnl ********************************************************
 dnl languages

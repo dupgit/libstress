@@ -21,7 +21,7 @@
    Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#include "libstress.h"
+#include "include/libstress.h"
 
 /**
  *  Populates a new test_t structure with the right values
