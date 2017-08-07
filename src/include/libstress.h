@@ -51,6 +51,7 @@ typedef struct
 	GList *test_list;   /**< lists of tests  */
 } main_struct_t;
 
+
 /**
  * Prototype definition for the tests functions
  * The vary function will be called until it returns FALSE
@@ -60,6 +61,7 @@ typedef gboolean (* TestExecFunc) (gpointer, guint, guint); /**< Test execution 
 typedef void (* TestInitFunc) (gpointer);                   /**< Test initialisation function type     */
 typedef void (* TestFinalFunc) (gpointer);                  /**< Test finalisation function type       */
 typedef gboolean (* TestVaryFunc) (gpointer, gboolean);     /**< Test varying function definition type */
+
 
 /**
  *  Test structure
@@ -79,6 +81,30 @@ typedef struct
 	guint max_threads;      /**< max number of threads                                               */
 	gfloat percent;         /**< values from 0.0 to 1.0 represents, in percent.                      */
 } test_t;
+
+
+/**
+ *  Populates a new test_t structure with the right values
+ *  @param groupname : a group_name where tests might be grouped together
+ *  @param name : the test name
+ *  @param dirname : the subdirectory name where the tests migth be conducted
+ *  @param exec : the exec function for an atomic test (might be NULL but the test will not run)
+ *  @param init : the init function for an atomic test (might be NULL)
+ *  @param final: the final function for an atomic test (might be NULL)
+ *  @param vary : the vary function used for internal datas (might be NULL)
+ *  @param data : the internal datas (if any - might be NULL) for the test itself
+ *  @param max_nb : maximum number of atomic test to be run
+ *  @param max_thread : maximum threads to run at a time
+ */
+extern test_t *new_test_t_struct(gchar *groupname, gchar *name, gchar *dirname, gchar *exec_dirname, TestExecFunc exec, TestInitFunc init, TestFinalFunc final, TestVaryFunc vary, gpointer data, guint max_nb, guint max_threads);
+
+
+/**
+ *  Adds a test to a test list
+ *  @param test_list : a list of tests
+ *  @param one_test : one test to add to the list
+ */
+extern GList *add_test_to_test_list(GList *test_list, test_t *one_test);
 
 
 #endif /* _LIBSTRESS_H_ */

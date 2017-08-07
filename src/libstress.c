@@ -5,7 +5,7 @@
 
    (C) Copyright 2009 Olivier Delhomme
    e-mail : olivierdelhomme@gmail.com
- 
+
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2, or (at your option)
@@ -18,7 +18,7 @@
 
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software Foundation,
-   Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.           
+   Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
 #include "libstress.h"
@@ -43,7 +43,7 @@ test_t *new_test_t_struct(gchar *groupname, gchar *name, gchar *dirname, gchar *
 	if (exec != NULL)
 		{
 			the_test = (test_t *) g_malloc0(sizeof(test_t));
-	
+
 			if (groupname == NULL)
 				{
 					the_test->groupname = g_strdup("Default Group");
@@ -84,12 +84,12 @@ test_t *new_test_t_struct(gchar *groupname, gchar *name, gchar *dirname, gchar *
 			the_test->init = init;
 			the_test->final = final;
 			the_test->vary = vary;
-			
+
 			the_test->data = data;
-			
+
 			the_test->max_nb = max_nb;
 			the_test->max_threads = max_threads;
-			
+
 			the_test->percent = 0.0;  /**< at init time we do think that nothing happened within the test itself */
 
 			return the_test;
