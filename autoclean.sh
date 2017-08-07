@@ -7,6 +7,8 @@ if [ -f Makefile ];
  then
     make distclean
 fi;
+rm -f compile
+echo "rm -f compile"
 rm -f aclocal.m4
 echo "rm -f aclocal.m4"
 rm -fr autom4te.cache
