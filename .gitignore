@@ -15,5 +15,7 @@ libtool
 ltmain.sh
 missing
 .libs
-stamp-h1
-
+stamp-*
+m4/
+*.in.in
+POTFILES
