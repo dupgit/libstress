@@ -5,7 +5,7 @@
 
    (C) Copyright 2009 Olivier Delhomme
    e-mail : olivierdelhomme@gmail.com
- 
+
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2, or (at your option)
@@ -18,12 +18,12 @@
 
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software Foundation,
-   Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.           
+   Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 #ifndef _LIBSTRESS_H_
 #define _LIBSTRESS_H_
 
-#include <errno.h> 
+#include <errno.h>
 #include <fcntl.h>
 #include <glib.h>
 #include <stdio.h>
@@ -33,7 +33,7 @@
 #include <unistd.h>
 
 #define LIBSTRESS_NAME "libstress"
-#define LIBSTRESS_VERSION "0.0.1"  
+#define LIBSTRESS_VERSION "0.0.1"
 #define LIBSTRESS_SUMMARY "libstress library"
 #define LIBSTRESS_DESCRIPTION "Provide some stress tests"
 #define LIBSTRESS_AUTHOR "Olivier Delhomme <olivierdelhomme@gmail.com>"
@@ -72,10 +72,10 @@ typedef struct
 	gchar *exec_dirname;    /**< directory name where the test should executes itself                */
 	TestExecFunc exec;      /**< execution function for the specified test                           */
 	TestInitFunc init;      /**< init function for the specified test                                */
-	TestFinalFunc finish;   /**< finish function for the specified test                              */
+	TestFinalFunc final;    /**< final function for the specified test                               */
 	TestVaryFunc vary;      /**< vary funciton used to vary internal parameters                      */
 	gpointer data;          /**< internal data of the test                                           */
-	guint max_nb;           /**< max number of atomic test per threads                               */        
+	guint max_nb;           /**< max number of atomic test per threads                               */
 	guint max_threads;      /**< max number of threads                                               */
 	gfloat percent;         /**< values from 0.0 to 1.0 represents, in percent.                      */
 } test_t;
