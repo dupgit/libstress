@@ -3,16 +3,15 @@ AC_PREREQ(2.59)
 AC_INIT([LIBSTRESS], [0.0.1],
         [Olivier Delhomme],
         [libstress])
-AC_CONFIG_HEADER([config.h])
-AM_INIT_AUTOMAKE([$PACKAGE_TARNAME], [$PACKAGE_VERSION])
+
+AC_PROG_CC
+AC_CONFIG_MACRO_DIR([m4])
+AC_PROG_INTLTOOL([0.23])
+
+AM_INIT_AUTOMAKE
 AM_MAINTAINER_MODE
 AM_SILENT_RULES([yes])
 
-dnl directory requirement
-dnl TOP_DIR=`pwd`
-dnl SRC_DIR="${TOP_DIR}/src"
-dnl AC_SUBST(TOP_DIR)
-dnl AC_SUBST(SRC_DIR)
 
 dnl Libraries requirements
 GLIB2_VERSION=2.2.0
@@ -20,6 +19,7 @@ AC_SUBST(GLIB2_VERSION)
 
 
 dnl Put the preprocessor macros in a header instead of command line 
+AC_CONFIG_HEADER([config.h])
 AC_CONFIG_SRCDIR([src/libstress.c])
 
 dnl Checks for headers
@@ -31,15 +31,17 @@ AM_PROG_LIBTOOL
 dnl ********************************************************
 dnl languages
 dnl ********************************************************
-ALL_LINGUAS="fr_FR en_GB"
+ALL_LINGUAS="fr"
+
 
 dnl ********************************************************
 dnl triggers gettext
 dnl ********************************************************
-AM_GLIB_GNU_GETTEXT
 GETTEXT_PACKAGE=libstress
 AC_SUBST(GETTEXT_PACKAGE)
-AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE",[fix])
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Gettext package used])
+AM_GLIB_GNU_GETTEXT
+
 
 dnl *******************************
 dnl checking for glib
@@ -74,7 +76,13 @@ AC_SUBST(CFLAGS)
 AC_SUBST(GLIB2_CFLAGS)
 AC_SUBST(GLIB2_LIBS)
 
-AC_CONFIG_FILES([Makefile src/Makefile libstress.pc])
+AC_CONFIG_FILES([
+Makefile 
+src/Makefile 
+po/Makefile.in
+libstress.pc
+])
+
 AC_OUTPUT
 
 
