@@ -3,7 +3,7 @@ AUTOMAKE_OPTIONS = gnu
 SUBDIRS= src
 
 EXTRA_DIST = 			\
-	libstress.pc.in	\
+	libstress.pc.in		\
 	autogen.sh		\
 	autoclean.sh		\
 	HISTORY
