@@ -14,8 +14,8 @@ AM_SILENT_RULES([yes])
 
 
 dnl Libraries requirements
-GLIB2_VERSION=2.2.0
-AC_SUBST(GLIB2_VERSION)
+GLIB_VERSION=2.2.0
+AC_SUBST(GLIB_VERSION)
 
 
 dnl Put the preprocessor macros in a header instead of command line 
@@ -46,7 +46,7 @@ AM_GLIB_GNU_GETTEXT
 dnl *******************************
 dnl checking for glib
 dnl *******************************
-PKG_CHECK_MODULES(GLIB2,[glib-2.0 >= $GLIB2_VERSION])
+PKG_CHECK_MODULES(GLIB, [glib-2.0 >= $GLIB_VERSION])
 
 AC_PROG_INSTALL
 
@@ -73,8 +73,8 @@ esac
 
 AC_SUBST(LDFLAGS)
 AC_SUBST(CFLAGS)
-AC_SUBST(GLIB2_CFLAGS)
-AC_SUBST(GLIB2_LIBS)
+AC_SUBST(GLIB_CFLAGS)
+AC_SUBST(GLIB_LIBS)
 
 AC_CONFIG_FILES([
 Makefile 
@@ -85,15 +85,25 @@ libstress.pc
 
 AC_OUTPUT
 
+AC_MSG_NOTICE([
 
-echo
-echo "*** Dumping configuration ***"
-echo 
-echo "    - Host                   : $host"
-echo "    - Compiler               : ${CC}"
-echo "    - Prefix                 : $prefix"
-echo "    - Exec prefix            : $exec_prefix"
-echo "    - Data dir               : $datadir"
-echo
-echo "    You can now run 'make' to compile libstress"
-echo
+ *** Flags that will be used to compile cdpfgl ***
+
+    CFLAGS         : ${CFLAGS}
+    LDFLAGS        : ${LDFLAGS}
+
+    GLIB CFLAGS    : ${GLIB_CFLAGS}
+    GLIB LIBS      : ${GLIB_LIBS}
+
+
+ *** Dumping configuration ***"
+ 
+    - Host                   : $host"
+    - Compiler               : ${CC}"
+    - Prefix                 : $prefix"
+    - Exec prefix            : $exec_prefix"
+    - Data dir               : $datadir"
+
+You can now run 'make' to compile libstress"
+
+])
